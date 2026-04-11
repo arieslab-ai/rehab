@@ -27,26 +27,26 @@
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   body { background: var(--bg); font-family: 'DM Sans', sans-serif; min-height: 100vh; padding-bottom: 80px; }
   h1, h2, h3 { font-family: 'DM Serif Display', serif; }
- 
+
   /* Layout */
   .container { max-width: var(--max); margin: 0 auto; padding: 16px; }
   .header { margin-bottom: 14px; }
   .header p { color: var(--muted); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 3px; }
   .header h1 { color: var(--dark); font-size: 24px; }
- 
+
   /* Bottom nav */
   .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--dark); display: flex; z-index: 100; padding-bottom: env(safe-area-inset-bottom); }
   .nav-btn { flex: 1; padding: 12px 4px 10px; border: none; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 3px; color: #555; font-size: 9px; font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.15s; }
   .nav-btn.active { color: #fff; }
   .nav-btn .icon { font-size: 20px; }
- 
+
   /* Cards */
   .card { background: var(--card); border-radius: 14px; margin-bottom: 10px; overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
   .card-pad { padding: 14px 16px; }
   .card-accent { border-left: 3px solid var(--ach); }
   .card-red { border-left: 3px solid var(--red); }
   .card-green { border-left: 3px solid var(--green); }
- 
+
   /* Tabs / toggles */
   .toggle-group { display: flex; background: var(--mid); border-radius: 11px; padding: 3px; gap: 3px; margin-bottom: 12px; }
   .toggle-btn { flex: 1; padding: 9px 4px; border: none; border-radius: 9px; cursor: pointer; font-size: 11px; font-weight: 700; font-family: 'DM Sans', sans-serif; background: transparent; color: #888; transition: all 0.15s; }
@@ -54,16 +54,16 @@
   .toggle-btn.active-pat { background: var(--pat); color: #fff; }
   .toggle-btn.active-ach { background: var(--ach); color: #fff; }
   .toggle-btn.active-elb { background: var(--elb); color: #fff; }
- 
+
   /* Section labels */
   .label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
- 
+
   /* Items */
   .item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
   .item-dot { font-size: 14px; flex-shrink: 0; line-height: 1.4; }
   .item-text { font-size: 13px; color: #333; line-height: 1.45; }
   .new-badge { display: inline-block; background: #4caf50; color: #fff; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 4px; margin-left: 6px; letter-spacing: 0.5px; vertical-align: middle; text-transform: uppercase; flex-shrink: 0; }
- 
+
   /* Day card */
   .day-header { background: var(--dark); padding: 11px 16px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
   .day-title { font-family: 'DM Serif Display', serif; font-size: 17px; color: #fff; }
@@ -73,7 +73,7 @@
   .day-principle { font-size: 12px; color: #aaa; font-style: italic; line-height: 1.4; margin-bottom: 10px; }
   .section-label { font-size: 10px; color: #aaa; letter-spacing: 2px; text-transform: uppercase; margin: 8px 0 5px; }
   .section-label:first-child { margin-top: 0; }
- 
+
   /* Phase toggles */
   .phase-box { background: var(--card); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
   .phase-row { margin-bottom: 10px; }
@@ -82,7 +82,7 @@
   .stage-btn { flex: 1; padding: 7px 0; border: none; border-radius: 8px; cursor: pointer; background: #f0ede8; color: #888; font-weight: 700; font-size: 12px; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
   .stage-btn.active-pat { background: var(--pat); color: #fff; }
   .stage-btn.active-ach { background: var(--ach); color: #fff; }
- 
+
   /* Rehab */
   .rehab-header { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
   .rehab-stage { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 2px; text-transform: uppercase; }
@@ -92,7 +92,7 @@
   .unlock-box { background: #f7f5f2; border-radius: 8px; padding: 9px 12px; margin-bottom: 14px; }
   .progress-box { background: #f0faf0; border-left: 3px solid var(--green); border-radius: 8px; padding: 10px 12px; }
   .progress-label { font-size: 10px; color: var(--green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
- 
+
   /* Log */
   .dark-card { background: var(--dark); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; }
   .z2-mins { font-family: 'DM Serif Display', serif; font-size: 28px; font-weight: 400; }
@@ -134,23 +134,23 @@
   .wave-btn.deload { background: #1e3a3a; color: var(--ach); }
   .advance-btn { width: 100%; padding: 11px; border: none; border-radius: 10px; background: #2a2a2a; color: #888; font-size: 13px; font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer; margin-top: 10px; transition: all 0.15s; }
   .advance-btn:active { opacity: 0.7; }
- 
+
   /* NOW badge */
   .now-badge { position: absolute; top: -6px; right: -3px; background: var(--red); color: #fff; font-size: 8px; font-weight: 900; padding: 1px 4px; border-radius: 4px; letter-spacing: 0.5px; }
   .stage-btn-wrap { position: relative; flex: 1; }
- 
+
   /* Legs */
   .leg-section { border-radius: 12px; padding: 12px 16px; margin-bottom: 10px; }
 </style>
 </head>
 <body>
- 
+
 <div class="container">
   <div class="header">
     <p>Training & Rehab</p>
     <h1>Recovery Reference</h1>
   </div>
- 
+
   <!-- PAGES -->
   <div id="page-schedule"></div>
   <div id="page-log" style="display:none"></div>
@@ -158,7 +158,7 @@
   <div id="page-legs" style="display:none"></div>
   <div id="page-why" style="display:none"></div>
 </div>
- 
+
 <!-- Bottom Nav -->
 <nav class="bottom-nav">
   <button class="nav-btn active" onclick="showPage('schedule')" id="nav-schedule">
@@ -177,7 +177,7 @@
     <span class="icon">💡</span>Why
   </button>
 </nav>
- 
+
 <script>
 // ─── STATE ────────────────────────────────────────────────────────────────────
 // ─── TB OPERATOR PROGRAM ─────────────────────────────────────────────────────
@@ -187,7 +187,7 @@ const TB_LIFTS = [
   { key: 'pull',     name: 'Cable Pulldown', tm: 205, incUpper: true, inc: 5 },
   { key: 'heelsq',   name: 'Heel-Elevated Squat', tm: null, incUpper: false, inc: 5 },
 ];
- 
+
 // wave: 0=W1(75%), 1=W2(80%), 2=W3(85-90%), 3=Deload
 const WAVE_CONFIG = [
   { label: 'Week 1', pct: 0.75, sets: '3–5', reps: '5', tag: '75%' },
@@ -195,7 +195,7 @@ const WAVE_CONFIG = [
   { label: 'Week 3', pct: 0.875, sets: '3–4', reps: '3', tag: '85–90%' },
   { label: 'Deload',  pct: 0.55, sets: '2',   reps: '5', tag: 'Deload' },
 ];
- 
+
 function loadProgram() {
   const saved = localStorage.getItem('tbProgram');
   if (saved) return JSON.parse(saved);
@@ -204,16 +204,16 @@ function loadProgram() {
   TB_LIFTS.forEach(l => tms[l.key] = l.tm);
   return { wave: 0, tms };
 }
- 
+
 function saveProgram(prog) {
   localStorage.setItem('tbProgram', JSON.stringify(prog));
 }
- 
+
 function getTargetWeight(tm, pct) {
   if (!tm) return null;
   return Math.round((tm * pct) / 5) * 5; // round to nearest 5
 }
- 
+
 function advanceWave() {
   const prog = loadProgram();
   if (prog.wave === 3) {
@@ -228,21 +228,21 @@ function advanceWave() {
   saveProgram(prog);
   render();
 }
- 
+
 function setWave(w) {
   const prog = loadProgram();
   prog.wave = w;
   saveProgram(prog);
   render();
 }
- 
+
 function updateTM(key, val) {
   const prog = loadProgram();
   prog.tms[key] = val;
   saveProgram(prog);
   render();
 }
- 
+
 const state = {
   page: 'schedule',
   patStage: parseInt(localStorage.getItem('patStage') || '1'),
@@ -254,7 +254,7 @@ const state = {
   logs: JSON.parse(localStorage.getItem('rehabLogs') || '[]'),
   openDays: {},
 };
- 
+
 // ─── SAVE STATE ───────────────────────────────────────────────────────────────
 function saveLogs() {
   localStorage.setItem('rehabLogs', JSON.stringify(state.logs));
@@ -263,7 +263,7 @@ function saveStages() {
   localStorage.setItem('patStage', state.patStage);
   localStorage.setItem('achStage', state.achStage);
 }
- 
+
 // ─── PHASE LOGIC ──────────────────────────────────────────────────────────────
 function getCap(ach, pat) {
   return {
@@ -275,7 +275,7 @@ function getCap(ach, pat) {
     band: pat === 1 ? '#4' : pat === 2 ? '#5' : pat === 3 ? '#6' : '#7',
   };
 }
- 
+
 function getExercises(ach, pat) {
   const c = getCap(ach, pat);
   const ex = ['Smith Incline Press','Cable Pulldown','Deadlift','RDL','Hip Thrust','Leg Curl','Nordic Curl','45° Hyper'];
@@ -287,19 +287,117 @@ function getExercises(ach, pat) {
   ex.push('Med Ball Slam','Kettlebell Swing','Pallof Press','Med Ball Rotation','Sled Push/Drag','Other');
   return ex;
 }
- 
+
 function getCardio(ach, pat) {
-  const c = getCap(ach, pat);
+  const cp = state ? getAutoCardioPhase(ach, pat) : 1;
   const cd = ['Assault Bike (Z2 — 115–135 bpm)','Carol Bike (Z2 — built-in zones)','Row Machine (Z2 — 120–135 bpm)','Assault Bike (Sprints)'];
-  if (c.jogging === 'light') cd.push('Jogging (light only)');
-  if (c.jogging === 'full') cd.push('Running (unrestricted)');
+  if (cp >= 2) cd.push('Easy Run/Walk');
+  if (cp >= 3) cd.push('Easy Run','Intensity Run (fartlek/hills)');
+  if (cp >= 4) cd.push('Long Run');
+  const c = getCap(ach, pat);
   if (c.treadmillSprints) cd.push('Treadmill Sprints');
   cd.push('Swimming','Deep Water Running','Walking (flat)');
   return cd;
 }
- 
+
+// ─── CARDIO PHASES ───────────────────────────────────────────────────────────
+// Phase 1: Bike/row only — current (Ach S3, Pat S1)
+// Phase 2: Run/walk intro 2x/week Mon+Wed, 10 min building to 25 min (Ach S3+, Pat S1+)
+// Phase 3: Run 3x/week Mon/Wed/Sun, 20-30 min building to 4-5 miles (Ach S4+, Pat S2+)
+// Phase 4: Full Luks — run Mon/Wed/Fri/Sun, bike Tue/Thu/Sat morning (Ach S4+, Pat S3+)
+
+const CARDIO_PHASES = [
+  {
+    phase: 1, label: 'Bike Only', tag: 'Current',
+    unlocks: 'Starting point — no running yet',
+    description: 'Assault bike, Carol, row machine. No running. Build aerobic base on low-impact machines.',
+    runDays: [],
+    bikeDays: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    requires: { ach: 1, pat: 1 },
+  },
+  {
+    phase: 2, label: 'Run/Walk Intro', tag: '',
+    unlocks: 'Ach Stage 3 + able to jog 10 min without next-day flare',
+    description: 'Replace Mon + Wed morning bike with run/walk intervals. Start 10 min, add 5 min every 1–2 weeks. Max 25 min before Phase 3. All other days stay bike/row.',
+    runDays: ['Mon','Wed'],
+    bikeDays: ['Tue','Thu','Fri','Sat','Sun'],
+    requires: { ach: 3, pat: 2 },
+    progression: [
+      'Week 1–2: 10 min easy run/walk (120–140 bpm). Walk if HR rises.',
+      'Week 3–4: 15 min. Run the whole thing if comfortable.',
+      'Week 5–6: 20 min continuous easy run.',
+      'Week 7–8: 25 min. No next-day flare → advance to Phase 3.',
+    ],
+  },
+  {
+    phase: 3, label: 'Run 3x/Week', tag: '',
+    unlocks: 'Ach Stage 4 + Pat Stage 2 + 25 min run without flare',
+    description: 'Run Mon/Wed/Sun. Bike Tue/Thu/Fri/Sat. Sprint Sunday becomes running intensity (fartlek or hill repeats). Build from 25 min to 4–5 miles over 8 weeks.',
+    runDays: ['Mon','Wed','Sun'],
+    bikeDays: ['Tue','Thu','Fri','Sat'],
+    requires: { ach: 3, pat: 3 },
+    progression: [
+      'Week 1–2: 25–30 min easy run Mon/Wed. 20 min Sun.',
+      'Week 3–4: 35 min Mon/Wed. 25–30 min Sun.',
+      'Week 5–6: 40 min Mon/Wed. 35 min Sun.',
+      'Week 7–8: 45–50 min (4 miles). 40 min Sun.',
+      'Sprint Sunday: replace assault bike intervals with 3 mile easy warm-up + 4×hill repeats or fartlek.',
+    ],
+  },
+  {
+    phase: 4, label: 'Full Luks Pattern', tag: '',
+    unlocks: 'Ach Stage 4 + Pat Stage 3 + running 4+ miles without flare',
+    description: 'Run Mon/Wed/Fri/Sun. Bike Tue/Thu + Sat morning before lift. One intensity run per week (Sun). Target 600+ min/week total aerobic.',
+    runDays: ['Mon','Wed','Fri','Sun'],
+    bikeDays: ['Tue','Thu','Sat'],
+    requires: { ach: 4, pat: 4 },
+    progression: [
+      'Mon/Wed/Fri: 4–5 miles easy Z2 (120–140 bpm running).',
+      'Sun: longer run — 5–7 miles easy, OR 3 mile warm-up + intensity work.',
+      'Tue/Thu: 45–60 min bike Z2.',
+      'Sat: 60 min bike Z2 before lift (fasted). Keep easy.',
+      'One intensity session/week max — Sun preferred.',
+    ],
+  },
+];
+
+function getCardioPhaseData(phase) {
+  return CARDIO_PHASES.find(p => p.phase === phase) || CARDIO_PHASES[0];
+}
+
+function getAutoCardioPhase(ach, pat) {
+  if (ach >= 4 && pat >= 4) return 4;  // Full Luks: run 4x/week
+  if (ach >= 3 && pat >= 3) return 3;  // Run 3x/week
+  if (ach >= 3 && pat >= 2) return 2;  // Walk/run intro
+  return 1;                             // Bike only
+}
+
+function isPhaseUnlocked(phase, ach, pat) {
+  const req = CARDIO_PHASES.find(p => p.phase === phase)?.requires || {ach:1,pat:1};
+  return ach >= req.ach && pat >= req.pat;
+}
+
+function getCardioForDay(day, phase) {
+  const pd = getCardioPhaseData(phase);
+  const isRunDay = pd.runDays.includes(day);
+  const isBikeDay = pd.bikeDays.includes(day);
+  if (phase === 1) return null; // handled inline per day
+  if (isRunDay) {
+    if (phase === 2) return { t: '🏃 Run/walk — start 10 min, build to 25 min. Easy Z2 (120–140 bpm). Walk if HR rises.', c: '#4caf50', isRun: true };
+    if (phase === 3 && day === 'Sun') return { t: '🏃 Intensity run — 3 mile easy warm-up, then 4× hill repeats or fartlek. Or easy 35–40 min if fatigued.', c: '#d94f4f', isRun: true };
+    if (phase === 3) return { t: '🏃 Easy run — 30–45 min Z2 (120–140 bpm). Conversational pace.', c: '#4caf50', isRun: true };
+    if (phase === 4 && day === 'Sun') return { t: '🏃 Long run or intensity — 5–7 miles easy Z2, OR 3 mile warm-up + hill repeats/fartlek.', c: '#d94f4f', isRun: true };
+    if (phase === 4) return { t: '🏃 Easy run — 4–5 miles Z2 (120–140 bpm). Conversational pace.', c: '#4caf50', isRun: true };
+  }
+  if (isBikeDay) {
+    if (day === 'Sat') return { t: 'Carol or assault bike — 60 min Z1/Z2. 110–130 bpm. Fasted. Keep easy.', c: '#4eadb5' };
+    return { t: 'Assault bike or Carol — Z2. Assault bike: 115–135 bpm. Carol: built-in zones.', c: '#4eadb5' };
+  }
+  return null;
+}
+
 // ─── SCHEDULE DATA ────────────────────────────────────────────────────────────
-function buildSchedule(ach, pat) {
+function buildSchedule(ach, pat, cardioPhase) {
   const c = getCap(ach, pat);
   const prev = getCap(ach > 1 ? ach - 1 : ach, pat > 1 ? pat - 1 : pat);
   // isNew: true if this item just became available at current stage combo
@@ -308,25 +406,25 @@ function buildSchedule(ach, pat) {
   const newJogging = c.jogging && !prev.jogging;
   const newSprints = c.treadmillSprints && !prev.treadmillSprints;
   const newBand = c.band !== prev.band;
- 
+
   const plyo = c.plyos ? 'Achilles plyos + heavy calf raises' : ach === 2 ? 'Heavy slow calf raises only — no plyos yet' : 'Calf isometrics only — no plyos yet';
   const legNote = c.legPress ? 'Leg press: start ~245–270 lbs (4×15) → build to ~365–415 lbs (4×6)' : null;
   const jogNote = c.jogging === 'light' ? '🏃 Light jog permitted — mild discomfort only' : c.jogging === 'full' ? '🏃 Running unrestricted' : null;
   const sprintNote = c.treadmillSprints ? 'OR: Treadmill sprints — 10 min walk, 6–8 × 20–30 sec hard / 90 sec walk.' : '⚠️ Treadmill sprints locked — need Pat Stage 2+ and Ach Stage 3+';
- 
+
   // Pat S1: patellar isos daily (therapeutic) — same logic as Achilles
   // Pat S2+: patellar isos gone entirely, isotonic work replaces them
   const isoDaily = pat < 2;
   const isoFull = `Leg ext iso + Spanish squat (${c.band} band) + Wrist ext + Grip trainer — after cardio`;
   const elbowOnly = `Wrist ext + Grip trainer — after cardio. Elbow only.`;
   const iso = isoFull;
- 
+
   return [
     { day:'Mon', label:'Z2 + Upper + Rehab', principle:'Aerobic base. Red light pre-cardio, isometrics after, sauna post-lift.',
-      morning:[{t:'💡 Red light — 10–15 min. Tendon focus: knee, Achilles, elbow.',c:'#b8860b'},{t:'Assault bike or Carol — 30–45 min Z2. Assault bike: 115–135 bpm.',c:'#4eadb5'},...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:elbowOnly,c:'#e8a838'}])],
+      morning:[{t:'💡 Red light — 10–15 min. Tendon focus: knee, Achilles, elbow.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Mon',cardioPhase); return cd?[cd]:[{t:'Assault bike or Carol — 30–45 min Z2. Assault bike: 115–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:elbowOnly,c:'#e8a838'}])],
       afternoon:[{t:'Smith incline press — heavy, low rep',c:'#c0674a'},{t:'Closed grip palm-up cable pulldown — heavy, low rep',c:'#c0674a'},{t:'Rotational core: med ball throws, 3×10 each side',c:'#9c6bba'},{t:'Balance: single-leg stance 3×30 sec (eyes open → closed)',c:'#9c6bba'},{t:plyo,c:'#4eadb5',n:newPlyos},{t:'🔥 Sauna — 15–20 min post-lift.',c:'#e8a838'}]},
     { day:'Tue', label:'Z2 + Posterior Chain', principle:'Long aerobic + leg strength. No plyos today. Sauna post-lift.',
-      morning:[{t:'💡 Red light — 10–15 min. Full body.',c:'#b8860b'},{t:'Row or assault bike — 60–75 min Z2. Row: 120–135 bpm. Assault bike: 115–135 bpm.',c:'#4eadb5'},...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext + Grip trainer — after cardio. Elbow only.',c:'#e8a838'}])],
+      morning:[{t:'💡 Red light — 10–15 min. Full body.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Tue',cardioPhase); return cd?[cd]:[{t:'Row or assault bike — 60–75 min Z2. Row: 120–135 bpm. Assault bike: 115–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext + Grip trainer — after cardio. Elbow only.',c:'#e8a838'}])],
       afternoon:[
         {t:'Deadlifts — start 270–300 lbs, build to 335+. Use straps. 3×3–5 working sets.',c:'#c0674a'},
         ...(c.legPress?[{t:'Heel-elevated squat — 3×10, 3 sec down. Add load progressively.',c:'#c0674a',n:newLegPress}]:[]),
@@ -336,10 +434,10 @@ function buildSchedule(ach, pat) {
         {t:'🔥 Sauna — 15–20 min post-lift.',c:'#e8a838'}
       ]},
     { day:'Wed', label:'Z2 + Upper + Rehab', principle:'Upper body buffers between Tue/Thu posterior chain. No sauna — heat rest day.',
-      morning:[{t:'💡 Red light — 10–15 min. Full body.',c:'#b8860b'},{t:'Assault bike or Carol — 60–75 min Z2. Assault bike: 115–135 bpm.',c:'#4eadb5'},...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:elbowOnly,c:'#e8a838'}])],
+      morning:[{t:'💡 Red light — 10–15 min. Full body.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Wed',cardioPhase); return cd?[cd]:[{t:'Assault bike or Carol — 60–75 min Z2. Assault bike: 115–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:elbowOnly,c:'#e8a838'}])],
       afternoon:[{t:'Smith incline press — heavy, low rep',c:'#c0674a'},{t:'Closed grip palm-up cable pulldown — heavy, low rep',c:'#c0674a'},{t:'Power: med ball slam 3×8, kettlebell swing 3×10',c:'#9c6bba'},{t:'Rotational core: Pallof press 3×10 each side',c:'#9c6bba'},{t:plyo,c:'#4eadb5',n:newPlyos},{t:'💡 Red light — 10–15 min post-lift. No sauna today.',c:'#b8860b'}]},
     { day:'Thu', label:'Z2 + Posterior Chain', principle:'Back to easy. Let Tuesday recover. Sauna post-lift.',
-      morning:[{t:'💡 Red light — 10–15 min. Tendon focus: knee, Achilles.',c:'#b8860b'},{t:'Row or Carol — 45–60 min Z2. Row: 120–135 bpm.',c:'#4eadb5'},...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext + Grip trainer — after cardio. Elbow only.',c:'#e8a838'}])],
+      morning:[{t:'💡 Red light — 10–15 min. Tendon focus: knee, Achilles.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Thu',cardioPhase); return cd?[cd]:[{t:'Row or Carol — 45–60 min Z2. Row: 120–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext + Grip trainer — after cardio. Elbow only.',c:'#e8a838'}])],
       afternoon:[
         {t:'Deadlifts or RDL variation — moderate weight, posterior chain focus. 3×5–8.',c:'#c0674a'},
         ...(c.legPress?[{t:'Heel-elevated squat — 3×10, 3 sec down. Add load progressively.',c:'#c0674a',n:newLegPress}]:[]),
@@ -349,17 +447,17 @@ function buildSchedule(ach, pat) {
         {t:'🔥 Sauna — 15–20 min. Red light first if doing both.',c:'#e8a838'}
       ]},
     { day:'Fri', label:'Z2 + Active Recovery', principle:'No lifting. Recover before Saturday. Hot tub evening.',
-      morning:[{t:'💡 Red light — 10–15 min. Focus on knee and Achilles.',c:'#b8860b'},{t:'Row or Carol — 30–45 min Z2. Row: 120–135 bpm.',c:'#4eadb5'},...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext + Grip trainer — after cardio. Elbow only. No patellar iso needed today.',c:'#e8a838'}])],
+      morning:[{t:'💡 Red light — 10–15 min. Focus on knee and Achilles.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Fri',cardioPhase); return cd?[cd]:[{t:'Row or Carol — 30–45 min Z2. Row: 120–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext + Grip trainer — after cardio. Elbow only. No patellar iso needed today.',c:'#e8a838'}])],
       afternoon:[{t:plyo,c:'#4eadb5',n:newPlyos},{t:'Balance: single-leg stance 3×30 sec, eyes open → closed',c:'#9c6bba'},{t:'Lateral movement: banded side walks or sled drag',c:'#9c6bba'},{t:'Optional: punching bag — light technical rounds',c:'#9c6bba'},{t:'💧 Hot tub — evening. Preps joints for Saturday lift.',c:'#4eadb5'}]},
     { day:'Sat', label:'Upper with Friends + Z2', principle:'Z2 fasted 6–7am → breakfast → lift 8am. Isometrics after lift.',
-      morning:[{t:'💡 Red light — 10 min before cardio.',c:'#b8860b'},{t:'6–7am: Carol or assault bike — 60 min Z1/Z2. 110–130 bpm. Fasted. Keep easy.',c:'#4eadb5'},{t:'7–8am: Breakfast',c:'#888'},{t:'8am: Smith incline press + cable pulldown — heavy, low rep',c:'#c0674a'},{t:'Whatever the group is doing — enjoy it',c:'#c0674a'},...(isoDaily?[{t:iso+' — after lift, not before',c:'#e8a838',n:newBand}]:[{t:elbowOnly+' After lift.',c:'#e8a838'}]),{t:'💧 Hot tub or 🔥 Sauna — post-lift.',c:'#4eadb5'}],
+      morning:[{t:'💡 Red light — 10 min before cardio.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Sat',cardioPhase); return cd?[cd]:[{t:'6–7am: Carol or assault bike — 60 min Z1/Z2. 110–130 bpm. Fasted. Keep easy.',c:'#4eadb5'}]; })(),{t:'7–8am: Breakfast',c:'#888'},{t:'8am: Smith incline press + cable pulldown — heavy, low rep',c:'#c0674a'},{t:'Whatever the group is doing — enjoy it',c:'#c0674a'},...(isoDaily?[{t:iso+' — after lift, not before',c:'#e8a838',n:newBand}]:[{t:elbowOnly+' After lift.',c:'#e8a838'}]),{t:'💧 Hot tub or 🔥 Sauna — post-lift.',c:'#4eadb5'}],
       afternoon:[{t:'Rest afternoon — done plenty.',c:'#888'}]},
     { day:'Sun', label:'🏃 Sprint Sunday', principle:'One hard day. Everything else was easy. Hot tub afternoon — no sauna.',
-      morning:[{t:'💡 Red light — 10–15 min before sprints.',c:'#b8860b'},{t:'Assault bike intervals — 10 min warm up, 6–8 × 20 sec all-out / 40 sec easy, 10 min cool down. USE THIS NOW.',c:'#d94f4f'},{t:sprintNote,c: c.treadmillSprints ? '#d94f4f' : '#aaa',n:newSprints},...(isoDaily?[{t:iso+' — after sprints',c:'#e8a838',n:newBand}]:[{t:elbowOnly+' After sprints.',c:'#e8a838'}]),...(jogNote?[{t:jogNote,c:'#4eadb5',n:newJogging}]:[])],
+      morning:[{t:'💡 Red light — 10–15 min before sprints.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Sun',cardioPhase); if(cd && cd.isRun) return [cd]; return [{t:'Assault bike intervals — 10 min warm up, 6–8 × 20 sec all-out / 40 sec easy, 10 min cool down. USE THIS NOW.',c:'#d94f4f'},{t:sprintNote,c: c.treadmillSprints ? '#d94f4f' : '#aaa',n:newSprints}]; })(),...(isoDaily?[{t:iso+' — after sprints',c:'#e8a838',n:newBand}]:[{t:elbowOnly+' After sprints.',c:'#e8a838'}]),...(jogNote?[{t:jogNote,c:'#4eadb5',n:newJogging}]:[])],
       afternoon:[{t:'Power: med ball slam 3×8, kettlebell swing 3×10',c:'#9c6bba'},{t:'Rotational core: Pallof press 3×10 each side',c:'#9c6bba'},{t:'Optional: punching bag — 3–4 rounds, explosive',c:'#9c6bba'},{t:'💧 Hot tub — afternoon. Begins Monday recovery. No sauna today.',c:'#4eadb5'}]},
   ];
 }
- 
+
 // ─── REHAB DATA ───────────────────────────────────────────────────────────────
 const rehabData = {
   patellar: { label:'Patellar', emoji:'🦵', color:'#e8a838', stages:[
@@ -425,13 +523,13 @@ const rehabData = {
       progress:'Full return. Continue maintenance wrist work 2x/week indefinitely.' },
   ]},
 };
- 
+
 const legData = {
   safe: { color:'#4caf50', bg:'#f0faf0', title:'✅ Safe Now', items:['Hip thrusts / glute bridges','Romanian deadlift (RDL)','Single-leg RDL','Leg curl (lying or seated)','Nordic hamstring curl','Hip abduction / clamshells','Hip extension on cable','Reverse hypers','Seated hip abduction machine','Conventional deadlift (test at 270–300 lbs first)','Sumo deadlift (monitor — slightly more knee flexion)'] },
   caution: { color:'#e8a838', bg:'#fdf8ee', title:'⚠️ Caution', items:['Good mornings','Deadlift first 2–3 sessions — watch Achilles 24hr response'] },
   avoid: { color:'#d94f4f', bg:'#fdf0f0', title:'❌ Avoid for Now', items:['Squats','Leg press (until Patellar Stage 2)','Hack squat','Bulgarian split squat with load','Lunges','Leg extension isotonic (isometric only)','Any deep knee flexion under load'] },
 };
- 
+
 const principles = [
   {icon:'🫁',title:'Aerobic Base First',body:'80–90% of all cardio at Z2. Assault bike: 115–135 bpm. Row: 120–135 bpm. Carol: built-in zones. Target 400–500 min/week, build toward 600+.'},
   {icon:'⚡',title:'One Intensity Day — Sprint Sunday',body:'Assault bike intervals only until Pat Stage 2 + Ach Stage 3 both achieved. Then treadmill sprints unlock.'},
@@ -445,13 +543,13 @@ const principles = [
   {icon:'💧',title:'Hot Tub Fri/Sun',body:'Fri evening preps joints for Saturday lift. Sun afternoon begins Monday recovery.'},
   {icon:'😴',title:'Recovery is Training',body:'Adaptations happen during recovery. Miss a day — just pick up where you left off.'},
 ];
- 
+
 // ─── RENDER HELPERS ───────────────────────────────────────────────────────────
 function item(text, color, isNew) {
   const badge = isNew ? '<span class="new-badge">NEW</span>' : '';
   return `<div class="item"><span class="item-dot" style="color:${color}">›</span><span class="item-text">${text}${badge}</span></div>`;
 }
- 
+
 function renderDayCard(day, idx) {
   const open = state.openDays[day.day];
   const body = open ? `
@@ -471,11 +569,14 @@ function renderDayCard(day, idx) {
       ${body}
     </div>`;
 }
- 
+
 // ─── PAGE RENDERS ─────────────────────────────────────────────────────────────
 function renderSchedule() {
   const { patStage, achStage } = state;
-  const sched = buildSchedule(achStage, patStage);
+  const cardioPhase = getAutoCardioPhase(achStage, patStage);
+  const sched = buildSchedule(achStage, patStage, cardioPhase);
+  const cpData = getCardioPhaseData(cardioPhase);
+
   return `
     <div class="phase-box">
       <p style="font-size:11px;font-weight:700;color:var(--dark);letter-spacing:1px;margin-bottom:10px">YOUR CURRENT PHASES</p>
@@ -491,6 +592,15 @@ function renderSchedule() {
           ${[1,2,3,4].map(s => `<button class="stage-btn ${achStage===s?'active-ach':''}" onclick="setStage('ach',${s})">S${s}</button>`).join('')}
         </div>
       </div>
+      <div class="phase-row" style="margin-bottom:0">
+        <p class="label">🏃 Cardio Phase — Auto</p>
+        <div style="padding:10px 12px;background:#f7f5f2;border-radius:8px;border-left:3px solid var(--ach)">
+          <p style="font-size:12px;font-weight:700;color:var(--ach);margin-bottom:3px">${cpData.label}</p>
+          <p style="font-size:12px;color:#555;line-height:1.4">${cpData.description}</p>
+          ${cpData.progression ? `<div style="margin-top:6px">${cpData.progression.map(s=>`<p style="font-size:11px;color:#888;margin-top:3px">› ${s}</p>`).join('')}</div>` : ''}
+          <p style="font-size:10px;color:#bbb;margin-top:6px">Next unlock: ${CARDIO_PHASES[cardioPhase] ? CARDIO_PHASES[cardioPhase].unlocks : '✓ Full program reached'}</p>
+        </div>
+      </div>
     </div>
     <div class="card card-accent card-pad" style="margin-bottom:12px">
       <p class="label">Luks Principle Applied to You</p>
@@ -502,12 +612,12 @@ function renderSchedule() {
       <p style="font-size:13px;color:#333;line-height:1.5">Start: ~400 min/week Z1/Z2. Build toward 600+. One hard session Sunday. Everything else conversational.</p>
     </div>`;
 }
- 
+
 function renderProgram() {
   const prog = loadProgram();
   const wave = WAVE_CONFIG[prog.wave];
   const isDeload = prog.wave === 3;
- 
+
   const liftsHtml = TB_LIFTS.map(l => {
     const tm = prog.tms[l.key];
     const target = getTargetWeight(tm, wave.pct);
@@ -522,13 +632,13 @@ function renderProgram() {
         </div>
       </div>`;
   }).join('');
- 
+
   const waveBtns = WAVE_CONFIG.map((w,i) => `
     <button class="wave-btn ${prog.wave===i?'active':''} ${i===3?'deload':''}" onclick="setWave(${i})">${w.tag}</button>
   `).join('');
- 
+
   const nextLabel = prog.wave === 3 ? `Start new cycle (+15 DL / +5 Press / +5 Pull)` : `Advance to ${WAVE_CONFIG[prog.wave+1]?.label || 'Deload'}`;
- 
+
   return `
     <div class="prog-card">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
@@ -543,7 +653,7 @@ function renderProgram() {
       <button class="advance-btn" onclick="advanceWave()">✓ Week complete → ${nextLabel}</button>
     </div>`;
 }
- 
+
 function renderLog() {
   const { logs, logIsCardio, logFilter } = state;
   const sevenAgo = Date.now() - 7*24*60*60*1000;
@@ -551,18 +661,18 @@ function renderLog() {
   const target = 450;
   const pct = Math.min(100, Math.round(z2mins/target*100));
   const hitTarget = z2mins >= target;
- 
+
   const exercises = getExercises(state.achStage, state.patStage);
   const cardio = getCardio(state.achStage, state.patStage);
   const currentList = logIsCardio ? cardio : exercises;
   const currentSel = logIsCardio ? (state.logCardioSel || cardio[0]) : (state.logExSel || exercises[0]);
- 
+
   const prs = {};
   logs.filter(l => !l.isCardio).forEach(l => { if (!prs[l.exercise] || l.weight > prs[l.exercise]) prs[l.exercise] = l.weight; });
- 
+
   const filterCats = ['All','Cardio',...new Set(logs.filter(l=>!l.isCardio).map(l=>l.exercise))];
   const filtered = logFilter === 'All' ? logs : logFilter === 'Cardio' ? logs.filter(l=>l.isCardio) : logs.filter(l=>!l.isCardio&&l.exercise===logFilter);
- 
+
   const prHtml = Object.keys(prs).length ? `
     <div class="dark-card">
       <p class="label" style="color:#888;margin-bottom:8px">Top Weights Logged</p>
@@ -570,7 +680,7 @@ function renderLog() {
         ${Object.entries(prs).map(([ex,w]) => `<span style="background:#2a2a2a;border-radius:8px;padding:4px 10px;font-size:11px;color:#aaa">${ex} <strong style="color:#e8a838">${w} lbs</strong></span>`).join('')}
       </div>
     </div>` : '';
- 
+
   const entryForm = logIsCardio ? `
     <div class="input-col" style="margin-bottom:10px">
       <p class="input-label">Duration (minutes)</p>
@@ -581,7 +691,7 @@ function renderLog() {
       <div class="input-col"><p class="input-label">Sets</p><input type="number" id="inp-sets" placeholder="3"></div>
       <div class="input-col"><p class="input-label">Reps</p><input type="number" id="inp-reps" placeholder="5"></div>
     </div>`;
- 
+
   return `
     ${renderProgram()}
     <div class="dark-card">
@@ -627,7 +737,7 @@ function renderLog() {
         </div>`).join('')}
     ` : `<div class="empty-state"><p style="font-size:13px">No sessions logged yet.</p><p style="font-size:12px;margin-top:4px">Log your first set above.</p></div>`}`;
 }
- 
+
 function renderRehab() {
   const { rehabTendon, rehabStage } = state;
   const t = rehabData[rehabTendon];
@@ -679,7 +789,7 @@ function renderRehab() {
       <p style="font-size:12px;color:#555;line-height:1.5">≤3–4/10 during exercise. If worse next morning → dial back. Change only one variable per session.</p>
     </div>`;
 }
- 
+
 function renderLegs() {
   return `
     ${Object.values(legData).map(s => `
@@ -692,7 +802,7 @@ function renderLegs() {
       ${['Last max: 335×10 → est. 1RM ~445–460 lbs','Warm up: 135×5, 185×3, 225×2','Test session: 3×3–5 at 270–300 lbs. Use straps — protects elbow.','No flare after → 315–335 lbs next session','Full weight after 2–3 clean sessions','Deadlift on non-plyo days only (Tue/Thu)','Drop to 245–255 lbs if knee flares next morning'].map(t => item(t,'var(--ach)')).join('')}
     </div>`;
 }
- 
+
 function renderWhy() {
   return `
     <div class="card card-pad" style="border-left:3px solid var(--dark);margin-bottom:12px">
@@ -705,7 +815,7 @@ function renderWhy() {
         <p style="font-size:13px;color:#555;line-height:1.5">${p.body}</p>
       </div>`).join('')}`;
 }
- 
+
 // ─── ACTIONS ──────────────────────────────────────────────────────────────────
 function showPage(page) {
   state.page = page;
@@ -715,52 +825,52 @@ function showPage(page) {
   });
   render();
 }
- 
+
 function render() {
   const p = state.page;
   const map = { schedule: renderSchedule, log: renderLog, rehab: renderRehab, legs: renderLegs, why: renderWhy };
   if (map[p]) document.getElementById('page-'+p).innerHTML = map[p]();
 }
- 
+
 function toggleDay(day) {
   state.openDays[day] = !state.openDays[day];
   render();
 }
- 
+
 function setStage(tendon, stage) {
   if (tendon === 'pat') state.patStage = stage;
   else state.achStage = stage;
   saveStages();
   render();
 }
- 
+
 function setRehabTendon(t) {
   state.rehabTendon = t;
   state.rehabStage = rehabData[t].stages.findIndex(s => s.tag === 'NOW');
   if (state.rehabStage < 0) state.rehabStage = 0;
   render();
 }
- 
+
 function setRehabStage(i) { state.rehabStage = i; render(); }
- 
+
 function setLogType(isCardio) {
   state.logIsCardio = isCardio;
   render();
 }
- 
+
 function selectEx(ex, isCardio) {
   if (isCardio) state.logCardioSel = ex;
   else state.logExSel = ex;
   render();
 }
- 
+
 function setFilter(f) { state.logFilter = f; render(); }
- 
+
 function saveLog() {
   const isCardio = state.logIsCardio;
   const exercise = isCardio ? (state.logCardioSel || getCardio(state.achStage, state.patStage)[0]) : (state.logExSel || getExercises(state.achStage, state.patStage)[0]);
   const note = document.getElementById('inp-note')?.value || '';
- 
+
   if (isCardio) {
     const dur = parseInt(document.getElementById('inp-duration')?.value);
     if (!dur) { showMsg('Enter duration in minutes.'); return; }
@@ -776,18 +886,18 @@ function saveLog() {
   showMsg('✓ Saved');
   render();
 }
- 
+
 function showMsg(msg) {
   const el = document.getElementById('log-msg');
   if (el) { el.textContent = msg; setTimeout(() => { if(el) el.textContent=''; }, 3000); }
 }
- 
+
 function deleteLog(id) {
   state.logs = state.logs.filter(l => l.id !== id);
   saveLogs();
   render();
 }
- 
+
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 state.rehabStage = rehabData[state.rehabTendon].stages.findIndex(s => s.tag === 'NOW');
 if (state.rehabStage < 0) state.rehabStage = 0;
