@@ -186,6 +186,7 @@ const TB_LIFTS = [
   { key: 'press',    name: 'Incline Press', tm: 230, incUpper: true, inc: 5 },
   { key: 'pull',     name: 'Cable Pulldown', tm: 205, incUpper: true, inc: 5 },
   { key: 'heelsq',   name: 'Heel-Elevated Squat', tm: null, incUpper: false, inc: 5 },
+  { key: 'grip',     name: 'GD Iron Grip (Tue/Thu post-lift)', tm: null, incUpper: true, inc: 0, isGrip: true },
 ];
 
 // wave: 0=W1(75%), 1=W2(80%), 2=W3(85-90%), 3=Deload
@@ -202,6 +203,7 @@ function loadProgram() {
   // Default: start at W1, use base TMs
   const tms = {};
   TB_LIFTS.forEach(l => tms[l.key] = l.tm);
+  if (!tms['grip']) tms['grip'] = 55; // Stage 1 = 55 lbs
   return { wave: 0, tms };
 }
 
@@ -239,6 +241,15 @@ function setWave(w) {
 function updateTM(key, val) {
   const prog = loadProgram();
   prog.tms[key] = val;
+  saveProgram(prog);
+  render();
+}
+
+const GRIP_STAGES = [55, 84, 112, 141, 170, 198];
+
+function setGripStage(lbs) {
+  const prog = loadProgram();
+  prog.tms['grip'] = lbs;
   saveProgram(prog);
   render();
 }
@@ -431,7 +442,7 @@ function buildSchedule(ach, pat, cardioPhase) {
         {t:'Hip thrusts — 3×10–12',c:'#c0674a'},
         {t:'Leg curl — 3×10–12',c:'#c0674a'},
         {t:'Sled push/drag — 4 lengths, low load',c:'#9c6bba'},
-        {t:'🔥 Sauna — 15–20 min post-lift.',c:'#e8a838'}
+        {t:'💪 GD Iron Grip — 3×10–15 reps post-lift. Increase resistance when 3×15 is easy.',c:'#c0674a'},{t:'🔥 Sauna — 15–20 min post-lift.',c:'#e8a838'}
       ]},
     { day:'Wed', label:'Z2 + Upper + Rehab', principle:'Upper body buffers between Tue/Thu posterior chain. No sauna — heat rest day.',
       morning:[{t:'💡 Red light — 10–15 min. Full body.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Wed',cardioPhase); return cd?[cd]:[{t:'Assault bike or Carol — 60–75 min Z2. Assault bike: 115–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:elbowOnly,c:'#e8a838'}])],
@@ -444,7 +455,7 @@ function buildSchedule(ach, pat, cardioPhase) {
         {t:'Leg curl — 3×10–12',c:'#c0674a'},
         {t:'Single-leg RDL — 3×8 each side',c:'#9c6bba'},
         {t:'Hip abduction + clamshells — 3×15',c:'#9c6bba'},
-        {t:'🔥 Sauna — 15–20 min. Red light first if doing both.',c:'#e8a838'}
+        {t:'💪 GD Iron Grip — 3×10–15 reps post-lift. Increase resistance when 3×15 is easy.',c:'#c0674a'},{t:'🔥 Sauna — 15–20 min. Red light first if doing both.',c:'#e8a838'}
       ]},
     { day:'Fri', label:'Z2 + Active Recovery', principle:'No lifting. Recover before Saturday. Hot tub evening.',
       morning:[{t:'💡 Red light — 10–15 min. Focus on knee and Achilles.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Fri',cardioPhase); return cd?[cd]:[{t:'Row or Carol — 30–45 min Z2. Row: 120–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext + Grip trainer — after cardio. Elbow only. No patellar iso needed today.',c:'#e8a838'}])],
@@ -619,6 +630,22 @@ function renderProgram() {
   const isDeload = prog.wave === 3;
 
   const liftsHtml = TB_LIFTS.map(l => {
+    if (l.isGrip) {
+      const gripRes = prog.tms['grip'] || 55;
+      const gripNote = isDeload ? 'Rest — skip today' : `${gripRes} lbs resistance`;
+      const gripSets = isDeload ? '' : '3 × 10–15 reps. Add resistance when 3×15 feels easy.';
+      return `
+        <div class="prog-lift" style="border-top:1px solid #2a2a2a;margin-top:4px;padding-top:12px">
+          <span class="prog-lift-name">${l.name}</span>
+          <div class="prog-lift-target" style="text-align:right">
+            <p class="prog-weight ${isDeload?'prog-deload':''}" style="font-size:15px">${gripNote}</p>
+            <p class="prog-sets">${gripSets}</p>
+            ${!isDeload ? `<div style="display:flex;gap:4px;margin-top:8px;flex-wrap:wrap;justify-content:flex-end">
+              ${[55,84,112,141,170,198].map((lbs,i) => `<button onclick="setGripStage(${lbs})" style="padding:3px 8px;border:none;border-radius:6px;background:${gripRes===lbs?'#c0674a':'#2a2a2a'};color:${gripRes===lbs?'#fff':'#aaa'};font-size:11px;cursor:pointer;font-weight:${gripRes===lbs?700:400}">S${i+1}<span style="font-size:9px;display:block">${lbs}lb</span></button>`).join('')}
+            </div>` : ''}
+          </div>
+        </div>`;
+    }
     const tm = prog.tms[l.key];
     const target = getTargetWeight(tm, wave.pct);
     const weightStr = target ? `${target} lbs` : 'BW + progress';
