@@ -6,7 +6,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Rehab">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
 <title>Rehab Reference</title>
+<!-- APP VERSION: v1 -->
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -853,6 +856,39 @@ function showPage(page) {
   render();
 }
 
+function exportLog() {
+  const data = JSON.stringify(state.logs, null, 2);
+  const blob = new Blob([data], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'rehab-log-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importLog(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (Array.isArray(imported)) {
+        state.logs = imported;
+        saveLogs();
+        render();
+        alert('✓ Imported ' + imported.length + ' entries');
+      } else {
+        alert('Invalid backup file');
+      }
+    } catch(err) {
+      alert('Could not read file');
+    }
+  };
+  reader.readAsText(file);
+}
+
 function render() {
   const p = state.page;
   const map = { schedule: renderSchedule, log: renderLog, rehab: renderRehab, legs: renderLegs, why: renderWhy };
@@ -929,6 +965,11 @@ function deleteLog(id) {
 state.rehabStage = rehabData[state.rehabTendon].stages.findIndex(s => s.tag === 'NOW');
 if (state.rehabStage < 0) state.rehabStage = 0;
 render();
+
+// ─── SERVICE WORKER ───────────────────────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch(() => {});
+}
 </script>
 </body>
 </html>
