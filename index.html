@@ -426,8 +426,8 @@ function buildSchedule(ach, pat, cardioPhase) {
   // Pat S1: patellar isos daily (therapeutic) — same logic as Achilles
   // Pat S2+: patellar isos gone entirely, isotonic work replaces them
   const isoDaily = pat < 2;
-  const isoFull = `Leg ext iso + Spanish squat (${c.band} band) + Wrist ext + Grip trainer — after cardio`;
-  const elbowOnly = `Wrist ext + Grip trainer — after cardio. Elbow only.`;
+  const isoFull = `Leg ext iso + Spanish squat (${c.band} band) + Wrist ext — after cardio`;
+  const elbowOnly = `Wrist ext isometric — after cardio. Elbow only.`;
   const iso = isoFull;
 
   return [
@@ -435,7 +435,7 @@ function buildSchedule(ach, pat, cardioPhase) {
       morning:[{t:'💡 Red light — 10–15 min. Tendon focus: knee, Achilles, elbow.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Mon',cardioPhase); return cd?[cd]:[{t:'Assault bike or Carol — 30–45 min Z2. Assault bike: 115–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:elbowOnly,c:'#e8a838'}])],
       afternoon:[{t:'Smith incline press — heavy, low rep',c:'#c0674a'},{t:'Closed grip palm-up cable pulldown — heavy, low rep',c:'#c0674a'},{t:'Rotational core: med ball throws, 3×10 each side',c:'#9c6bba'},{t:'Balance: single-leg stance 3×30 sec (eyes open → closed)',c:'#9c6bba'},{t:plyo,c:'#4eadb5',n:newPlyos},{t:'🔥 Sauna — 15–20 min post-lift.',c:'#e8a838'}]},
     { day:'Tue', label:'Z2 + Posterior Chain', principle:'Long aerobic + leg strength. No plyos today. Sauna post-lift.',
-      morning:[{t:'💡 Red light — 10–15 min. Full body.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Tue',cardioPhase); return cd?[cd]:[{t:'Row or assault bike — 60–75 min Z2. Row: 120–135 bpm. Assault bike: 115–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext + Grip trainer — after cardio. Elbow only.',c:'#e8a838'}])],
+      morning:[{t:'💡 Red light — 10–15 min. Full body.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Tue',cardioPhase); return cd?[cd]:[{t:'Row or assault bike — 60–75 min Z2. Row: 120–135 bpm. Assault bike: 115–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext isometric — after cardio. Elbow only.',c:'#e8a838'}])],
       afternoon:[
         {t:'Deadlifts — start 270–300 lbs, build to 335+. Use straps. 3×3–5 working sets.',c:'#c0674a'},
         ...(c.legPress?[{t:'Heel-elevated squat — 3×10, 3 sec down. Add load progressively.',c:'#c0674a',n:newLegPress}]:[]),
@@ -448,7 +448,7 @@ function buildSchedule(ach, pat, cardioPhase) {
       morning:[{t:'💡 Red light — 10–15 min. Full body.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Wed',cardioPhase); return cd?[cd]:[{t:'Assault bike or Carol — 60–75 min Z2. Assault bike: 115–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:elbowOnly,c:'#e8a838'}])],
       afternoon:[{t:'Smith incline press — heavy, low rep',c:'#c0674a'},{t:'Closed grip palm-up cable pulldown — heavy, low rep',c:'#c0674a'},{t:'Power: med ball slam 3×8, kettlebell swing 3×10',c:'#9c6bba'},{t:'Rotational core: Pallof press 3×10 each side',c:'#9c6bba'},{t:plyo,c:'#4eadb5',n:newPlyos},{t:'💡 Red light — 10–15 min post-lift. No sauna today.',c:'#b8860b'}]},
     { day:'Thu', label:'Z2 + Posterior Chain', principle:'Back to easy. Let Tuesday recover. Sauna post-lift.',
-      morning:[{t:'💡 Red light — 10–15 min. Tendon focus: knee, Achilles.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Thu',cardioPhase); return cd?[cd]:[{t:'Row or Carol — 45–60 min Z2. Row: 120–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext + Grip trainer — after cardio. Elbow only.',c:'#e8a838'}])],
+      morning:[{t:'💡 Red light — 10–15 min. Tendon focus: knee, Achilles.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Thu',cardioPhase); return cd?[cd]:[{t:'Row or Carol — 45–60 min Z2. Row: 120–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext isometric — after cardio. Elbow only.',c:'#e8a838'}])],
       afternoon:[
         {t:'Deadlifts or RDL variation — moderate weight, posterior chain focus. 3×5–8.',c:'#c0674a'},
         ...(c.legPress?[{t:'Heel-elevated squat — 3×10, 3 sec down. Add load progressively.',c:'#c0674a',n:newLegPress}]:[]),
@@ -458,7 +458,7 @@ function buildSchedule(ach, pat, cardioPhase) {
         {t:'💪 GD Iron Grip — 3×10–15 reps post-lift. Increase resistance when 3×15 is easy.',c:'#c0674a'},{t:'🔥 Sauna — 15–20 min. Red light first if doing both.',c:'#e8a838'}
       ]},
     { day:'Fri', label:'Z2 + Active Recovery', principle:'No lifting. Recover before Saturday. Hot tub evening.',
-      morning:[{t:'💡 Red light — 10–15 min. Focus on knee and Achilles.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Fri',cardioPhase); return cd?[cd]:[{t:'Row or Carol — 30–45 min Z2. Row: 120–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext + Grip trainer — after cardio. Elbow only. No patellar iso needed today.',c:'#e8a838'}])],
+      morning:[{t:'💡 Red light — 10–15 min. Focus on knee and Achilles.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Fri',cardioPhase); return cd?[cd]:[{t:'Row or Carol — 30–45 min Z2. Row: 120–135 bpm.',c:'#4eadb5'}]; })(),...(isoDaily?[{t:iso,c:'#e8a838',n:newBand}]:[{t:'Wrist ext isometric — after cardio. Elbow only.',c:'#e8a838'}])],
       afternoon:[{t:plyo,c:'#4eadb5',n:newPlyos},{t:'Balance: single-leg stance 3×30 sec, eyes open → closed',c:'#9c6bba'},{t:'Lateral movement: banded side walks or sled drag',c:'#9c6bba'},{t:'Optional: punching bag — light technical rounds',c:'#9c6bba'},{t:'💧 Hot tub — evening. Preps joints for Saturday lift.',c:'#4eadb5'}]},
     { day:'Sat', label:'Upper with Friends + Z2', principle:'Z2 fasted 6–7am → breakfast → lift 8am. Isometrics after lift.',
       morning:[{t:'💡 Red light — 10 min before cardio.',c:'#b8860b'},...(()=>{ const cd=getCardioForDay('Sat',cardioPhase); return cd?[cd]:[{t:'6–7am: Carol or assault bike — 60 min Z1/Z2. 110–130 bpm. Fasted. Keep easy.',c:'#4eadb5'}]; })(),{t:'7–8am: Breakfast',c:'#888'},{t:'8am: Smith incline press + cable pulldown — heavy, low rep',c:'#c0674a'},{t:'Whatever the group is doing — enjoy it',c:'#c0674a'},...(isoDaily?[{t:iso+' — after lift, not before',c:'#e8a838',n:newBand}]:[{t:elbowOnly+' After lift.',c:'#e8a838'}]),{t:'💧 Hot tub or 🔥 Sauna — post-lift.',c:'#4eadb5'}],
