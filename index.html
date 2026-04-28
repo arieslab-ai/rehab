@@ -282,6 +282,12 @@ function saveStages() {
   localStorage.setItem('achStage', state.achStage);
 }
 
+function setProgramMode(mode) {
+  state.programMode = mode;
+  localStorage.setItem('programMode', mode);
+  render();
+}
+
 // ─── PHASE LOGIC ──────────────────────────────────────────────────────────────
 function getCap(ach, pat) {
   return {
@@ -413,6 +419,107 @@ function getCardioForDay(day, phase) {
     return { t: 'Assault bike or Carol — Z2. Assault bike: 115–135 bpm. Carol: built-in zones.', c: '#4eadb5' };
   }
   return null;
+}
+
+// ─── RECOVERY MODE SCHEDULE ──────────────────────────────────────────────────
+function buildRecoverySchedule(ach, pat, cardioPhase) {
+  const c = getCap(ach, pat);
+  const prev = getCap(ach > 1 ? ach - 1 : ach, pat > 1 ? pat - 1 : pat);
+  const newLegPress = c.legPress && !prev.legPress;
+  const newBand = c.band !== prev.band;
+  const isoDaily = pat < 2;
+  const isoFull = 'Leg ext iso + Spanish squat (' + c.band + ' band) + Wrist ext — after cardio';
+  const elbowOnly = 'Wrist ext isometric — after cardio. Elbow only.';
+
+  const liftAfternoon = [
+    {t:'Easy walk or Z1 bike — 20–30 min. Purely restorative.',c:'#4eadb5'}
+  ];
+
+  const z2Morning = (day) => {
+    const cd = getCardioForDay(day, cardioPhase);
+    return cd ? cd : {t:'Z2 bike, Carol or row — 45–60 min. Easy, conversational. No HR pressure.',c:'#4eadb5'};
+  };
+
+  const isoBlock = (after) => isoDaily
+    ? [{t:isoFull + (after?' — '+after:''),c:'#e8a838',n:newBand}]
+    : [{t:elbowOnly+(after?' '+after:''),c:'#e8a838'}];
+
+  const plyo = c.plyos
+    ? 'Achilles plyos — 10 min. Hops + decel drills.'
+    : ach === 2 ? 'Heavy slow calf raises — 3×12.'
+    : 'Calf isometrics — 5×45 sec.';
+
+  const squat = c.legPress
+    ? 'Heel-elevated squat — 3×10, 3 sec down.' + (newLegPress?' (NEW)':'')
+    : 'Goblet squat (BW) — 3×10, slow tempo.';
+
+  const liftBlock = [
+    {t:'Smith incline press — 3×5 working weight.',c:'#c0674a'},
+    {t:'Overhead press — 3×5.',c:'#c0674a'},
+    {t:'Cable pulldown — 3×5 working weight.',c:'#c0674a'},
+    {t:'45° Hyper — 3×10. Add plate when easy.',c:'#c0674a'},
+    {t:squat,c:'#c0674a',n:newLegPress},
+    {t:'Optional: Deadlift — 3×3 if energy is there. Skip if fatigued.',c:'#888'},
+  ];
+
+  return [
+    { day:'Mon', label:'Full Body Lift', principle:'One of two lift days. Keep it simple. Quality over volume.',
+      morning:[
+        {t:'💡 Red light — 10–15 min.',c:'#b8860b'},
+        ...liftBlock,
+        ...isoBlock('after lift'),
+        {t:'🔥 Sauna — post-lift if desired.',c:'#e8a838'},
+      ],
+      afternoon:[...liftAfternoon]},
+    { day:'Tue', label:'Z2 + Rehab', principle:'Aerobic only. Let Monday recover.',
+      morning:[
+        {t:'💡 Red light — 10–15 min.',c:'#b8860b'},
+        z2Morning('Tue'),
+        ...isoBlock(),
+        {t:plyo,c:'#4eadb5'},
+      ],
+      afternoon:[...liftAfternoon]},
+    { day:'Wed', label:'Z2 + Rehab', principle:'Mid-week aerobic. Easy day.',
+      morning:[
+        {t:'💡 Red light — 10–15 min.',c:'#b8860b'},
+        z2Morning('Wed'),
+        ...isoBlock(),
+      ],
+      afternoon:[...liftAfternoon]},
+    { day:'Thu', label:'Z2 + Rehab', principle:'Second aerobic block. Keep it easy.',
+      morning:[
+        {t:'💡 Red light — 10–15 min.',c:'#b8860b'},
+        z2Morning('Thu'),
+        ...isoBlock(),
+        {t:plyo,c:'#4eadb5'},
+      ],
+      afternoon:[...liftAfternoon]},
+    { day:'Fri', label:'Z2 + Rehab', principle:'Light day before Saturday lift.',
+      morning:[
+        {t:'💡 Red light — 10–15 min.',c:'#b8860b'},
+        z2Morning('Fri'),
+        ...isoBlock(),
+      ],
+      afternoon:[{t:'Easy walk or complete rest. Prep for Saturday.',c:'#888'}]},
+    { day:'Sat', label:'Full Body Lift', principle:'Second lift day. Z2 fasted optional before lift.',
+      morning:[
+        {t:'💡 Red light — 10 min.',c:'#b8860b'},
+        {t:'Optional: 30 min Z2 fasted before lift.',c:'#4eadb5'},
+        {t:'Breakfast',c:'#888'},
+        ...liftBlock,
+        ...isoBlock('after lift'),
+        {t:'💧 Hot tub or 🔥 Sauna — post-lift.',c:'#4eadb5'},
+      ],
+      afternoon:[{t:'Rest.',c:'#888'}]},
+    { day:'Sun', label:'Z2 + Light Rehab', principle:'Easy close to the week. No intensity pressure.',
+      morning:[
+        {t:'💡 Red light — 10–15 min.',c:'#b8860b'},
+        z2Morning('Sun'),
+        ...isoBlock(),
+        {t:plyo,c:'#4eadb5'},
+      ],
+      afternoon:[{t:'Hot tub — recovery.',c:'#4eadb5'}]},
+  ];
 }
 
 // ─── SCHEDULE DATA ────────────────────────────────────────────────────────────
@@ -591,12 +698,23 @@ function renderDayCard(day, idx) {
 
 // ─── PAGE RENDERS ─────────────────────────────────────────────────────────────
 function renderSchedule() {
-  const { patStage, achStage } = state;
+  const { patStage, achStage, programMode } = state;
   const cardioPhase = getAutoCardioPhase(achStage, patStage);
-  const sched = buildSchedule(achStage, patStage, cardioPhase);
+  const sched = programMode === 'recovery'
+    ? buildRecoverySchedule(achStage, patStage, cardioPhase)
+    : buildSchedule(achStage, patStage, cardioPhase);
   const cpData = getCardioPhaseData(cardioPhase);
 
-  return `
+  const fullBg = programMode==='full' ? '#1a1a1a' : 'transparent';
+  const fullCol = programMode==='full' ? '#fff' : '#888';
+  const recBg = programMode==='recovery' ? '#4eadb5' : 'transparent';
+  const recCol = programMode==='recovery' ? '#fff' : '#888';
+  const modeToggle = '<div style="display:flex;background:#e0ddd7;border-radius:11px;padding:3px;gap:3px;margin-bottom:14px">'
+    + '<button onclick="setProgramMode(&quot;full&quot;)" style="flex:1;padding:9px 4px;border:none;border-radius:9px;cursor:pointer;font-size:12px;font-weight:700;background:' + fullBg + ';color:' + fullCol + '">⚡ Full Program</button>'
+    + '<button onclick="setProgramMode(&quot;recovery&quot;)" style="flex:1;padding:9px 4px;border:none;border-radius:9px;cursor:pointer;font-size:12px;font-weight:700;background:' + recBg + ';color:' + recCol + '">🌿 Recovery Mode</button>'
+    + '</div>';
+
+  return modeToggle + `
     <div class="phase-box">
       <p style="font-size:11px;font-weight:700;color:var(--dark);letter-spacing:1px;margin-bottom:10px">YOUR CURRENT PHASES</p>
       <div class="phase-row">
