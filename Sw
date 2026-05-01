@@ -1,4 +1,4 @@
-const VERSION = ‘v9’;
+const VERSION = ‘v13’;
 const CACHE = ‘rehab-’ + VERSION;
 
 self.addEventListener(‘install’, e => {
