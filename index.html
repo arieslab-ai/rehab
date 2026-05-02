@@ -421,10 +421,10 @@ function getCardioForDay(day, phase) {
   return null;
 }
 
-// ─── RECOVERY MODE — MENTZER HEAVY DUTY 2 ───────────────────────────────────
-// 4-session rotation every ~4 days. Saturday anchored as lift day.
-// One set to failure upper body. Submaximal lower body (tendon protection).
-// HIIT on non-lift days or same day as lift — Carol or assault bike, 7–27 min.
+// ─── 2-DAY PROGRAM — FULL BODY WED + SAT ────────────────────────────────────
+// Wed: Mentzer style — one set to failure, ~25-35 min
+// Sat: TB style — 3 sets 5 reps ~80%, ~40-50 min
+// All other days: Z2, walk, optional HIIT, rehab isos, Achilles plyos
 
 function buildRecoverySchedule(ach, pat, cardioPhase) {
   const c = getCap(ach, pat);
@@ -444,91 +444,61 @@ function buildRecoverySchedule(ach, pat, cardioPhase) {
     : ach === 2 ? 'Heavy slow calf raises — 3×12.'
     : 'Calf isometrics — 5×45 sec.';
 
-  const hiit = {t:'HIIT — Carol REHIT or assault bike intervals. 7–27 min. Can do same day as lift or standalone.',c:'#d94f4f'};
+  const hiit = {t:'Optional HIIT — Carol REHIT or assault bike 7–20 min. Non-lift day only.',c:'#d94f4f'};
   const z2 = {t:'Z2 — Carol, assault bike or row. 30–45 min easy. Conversational pace.',c:'#4eadb5'};
-  const walk = {t:'Walking — Z1, as much as you want. This is your aerobic base.',c:'#4eadb5'};
+  const walk = {t:'Walking — Z1, as much as you want.',c:'#4eadb5'};
   const redlight = {t:'💡 Red light — 10–15 min.',c:'#b8860b'};
   const sauna = {t:'🔥 Sauna — 15–20 min post-lift.',c:'#e8a838'};
 
-  // Session 1 — Chest & Back
-  const s1 = [
-    {t:'Cable fly (pre-exhaust) → Smith incline press — 1 set to failure.',c:'#c0674a'},
-    {t:'Cable lat pullover (pre-exhaust) → Straight bar pulldown — 1 set to failure.',c:'#c0674a'},
-    {t:'Cable shrug — 1 set to failure.',c:'#c0674a'},
-    {t:'GHR sit-ups — 1 set to failure.',c:'#c0674a'},
-    {t:'Grip trainer — 1 set.',c:'#c0674a'},
+  const squat = c.legPress
+    ? 'Heel-elevated squat — submaximal, stop 3 reps short of failure.' + (newLegPress?' (NEW)':'')
+    : 'Goblet squat BW — controlled tempo, no failure.';
+
+  const hipAbduction = {t:'Seated hip abduction — 2×15–20 reps, very light. Progress only after 2 pain-free sessions at same load.',c:'#9c6bba'};
+
+  // Wednesday — Mentzer style (one set to failure)
+  const wedLifts = [
+    {t:'Smith incline press — pre-exhaust with cable fly if available. 1 set to failure.',c:'#c0674a'},
+    {t:'Smith overhead press — 1 set to failure.',c:'#c0674a'},
+    {t:'Weighted pullups or cable pulldown — 1 set to failure.',c:'#c0674a'},
+    {t:squat + ' 1 set.',c:'#c0674a',n:newLegPress},
+    {t:'45° Hyper OR deadlift (alternate weekly) — 1 set. Hyper to failure. Deadlift submaximal only.',c:'#c0674a'},
+    {t:'Achilles heavy calf raise — 1 set to failure.',c:'#4eadb5'},
+    hipAbduction,
   ];
 
-  // Session 2 — Legs & Abs (submaximal — tendon protection)
-  const s2 = [
-    {t:'Leg curl (pre-exhaust) — 1 set, stop 3 reps short of failure.',c:'#c0674a'},
-    {t:'Deadlift — 1 set submaximal. Never to failure. Use straps.',c:'#c0674a'},
-    ...(c.legPress ? [{t:'Leg press — 1 set, stop 3 reps short of failure.',c:'#c0674a',n:newLegPress}] : []),
-    {t:'Smith hip thrust — 1 set to failure.',c:'#c0674a'},
-    {t:'Calf raise — 1 set to failure.',c:'#4eadb5'},
-  ];
-
-  // Session 3 — Shoulders & Arms
-  const s3 = [
-    {t:'Smith OHP — 1 set to failure.',c:'#c0674a'},
-    {t:'Cable rear fly — 1 set to failure.',c:'#c0674a'},
-    {t:'Standing barbell curl — 1 set to failure.',c:'#c0674a'},
-    {t:'Tricep pushdown — 1 set to failure.',c:'#c0674a'},
-    {t:'Dips — 1 set to failure.',c:'#c0674a'},
-    {t:'Grip trainer — 1 set.',c:'#c0674a'},
-    {t:'GHR sit-ups — 1 set to failure.',c:'#c0674a'},
-  ];
-
-  // Session 4 — Legs (submaximal — tendon protection)
-  const s4 = [
-    {t:'Leg extension isometric (pre-exhaust) — 5×45 sec. Therapeutic + pre-exhaust.',c:'#e8a838'},
-    ...(c.legPress
-      ? [{t:'Smith box squat — 1 set, stop 3 reps short of failure.',c:'#c0674a',n:newLegPress}]
-      : [{t:'Goblet squat BW — 1 set, controlled tempo. No failure.',c:'#c0674a'}]),
-    {t:'45° Hyper — 1 set to failure.',c:'#c0674a'},
-    {t:'Calf raise — 1 set to failure.',c:'#4eadb5'},
+  // Saturday — TB style (3 sets, ~80%, leave 2 reps in tank)
+  const satLifts = [
+    {t:'Smith incline press — 3×5 at ~80%. Leave 2 reps in tank.',c:'#c0674a'},
+    {t:'Smith overhead press — 3×5 at ~80%.',c:'#c0674a'},
+    {t:'Weighted pullups or cable pulldown — 3×5 at ~80%.',c:'#c0674a'},
+    {t:squat + ' 3×5 submaximal.',c:'#c0674a',n:newLegPress},
+    {t:'45° Hyper OR deadlift (alternate weekly) — 3×5. Hyper moderate. Deadlift submaximal only.',c:'#c0674a'},
+    {t:'Achilles heavy calf raise — 3×8–10.',c:'#4eadb5'},
+    hipAbduction,
   ];
 
   return [
-    { day:'Mon', label:'Z2 + Rehab', principle:'Easy start to the week. Optional HIIT if energy is good and legs feel fresh.',
-      morning:[redlight, z2, {t:'Optional HIIT — Carol REHIT or assault bike 7–20 min. Only if legs feel fresh. Skip if tired.',c:'#d94f4f'}, ...isoBlock(), {t:plyo,c:'#4eadb5'}],
+    { day:'Mon', label:'Z2 + Rehab', principle:'Easy start. Optional HIIT if feeling good.',
+      morning:[redlight, z2, hiit, ...isoBlock(), {t:plyo,c:'#4eadb5'}],
       afternoon:[walk]},
-    { day:'Tue', label:'Z2 + Rehab', principle:'Easy aerobic. Optional HIIT if legs feel good.',
-      morning:[redlight, z2, {t:'Optional HIIT — Carol REHIT or assault bike 7–20 min. Non-lift day only.',c:'#d94f4f'}, ...isoBlock()],
-      afternoon:[walk]},
-    { day:'Wed', label:'Legs ✓ or Thu', principle:'4 days after Saturday. Legs today if feeling good — otherwise push to Thursday. 20–28 min.',
-      morning:[redlight,
-        {t:'Recovery check — 4 days since Saturday. Feeling good → legs now. Feeling off → push to Thursday.',c:'#888'},
-        {t:'Alternate each week — Session 2 or Session 4:',c:'#888'},
-        {t:'Session 2 — Legs & Abs: Leg curl (pre-exhaust, submaximal) → Deadlift (submaximal, never to failure), Leg press (submaximal, Pat S2+), Smith hip thrust (to failure), Calf raise (to failure).',c:'#c0674a'},
-        {t:'Session 4 — Legs: Leg ext iso → Smith box squat (submaximal), 45° Hyper (to failure), Calf raise (to failure).',c:'#c0674a'},
-        ...isoBlock(),
-        {t:plyo,c:'#4eadb5'},
-      ],
-      afternoon:[walk]},
-    { day:'Thu', label:'Legs ✓ (if not Wed)', principle:'5 days after Saturday. Legs today if you skipped Wednesday.',
-      morning:[redlight,
-        {t:'If you lifted Wednesday → Z2 + HIIT only today. If you skipped Wed → same leg session options as Wednesday.',c:'#888'},
-        {t:'Session 2 — Legs & Abs: Leg curl → Deadlift (submaximal), Leg press (submaximal), Smith hip thrust, Calf raise.',c:'#c0674a'},
-        {t:'Session 4 — Legs: Leg ext iso → Smith box squat (submaximal), 45° Hyper, Calf raise.',c:'#c0674a'},
-        ...isoBlock(),
-      ],
-      afternoon:[walk]},
-    { day:'Fri', label:'Z2 + Rehab', principle:'Rest day before Saturday. Keep it easy — no HIIT today.',
+    { day:'Tue', label:'Z2 + Rehab', principle:'Easy aerobic. Walk. No structure pressure.',
       morning:[redlight, z2, ...isoBlock()],
       afternoon:[walk]},
-    { day:'Sat', label:'Upper Lift with Friends 💪', principle:'Alternating Session 1 and 3 each week. One set to failure. 20–28 min.',
-      morning:[redlight,
-        {t:'Alternate each week — Session 1 or Session 3:',c:'#888'},
-        {t:'Session 1 — Chest & Back: Cable fly (pre-exhaust) → Smith incline press, Cable lat pullover (pre-exhaust) → Straight bar pulldown, Cable shrug, GHR sit-ups, Grip. One set to failure each.',c:'#c0674a'},
-        {t:'Session 3 — Shoulders & Arms: Smith OHP, Cable rear fly, Standing barbell curl, Tricep pushdown, Dips, Grip, GHR sit-ups. One set to failure each.',c:'#c0674a'},
-        ...isoBlock(),
-        sauna,
-        {t:'💧 Hot tub — recovery.',c:'#4eadb5'},
-      ],
-      afternoon:[{t:'Rest. You earned it.',c:'#888'}]},
-    { day:'Sun', label:'Z2 + Rehab', principle:'Easy close. Optional HIIT if feeling good.',
-      morning:[redlight, z2, {t:'Optional HIIT — Carol REHIT or assault bike 7–20 min. Non-lift day only.',c:'#d94f4f'}, ...isoBlock(), {t:plyo,c:'#4eadb5'}],
+    { day:'Wed', label:'Full Body — Mentzer Style 💪', principle:'One set to failure. Pre-exhaust where applicable. 25–35 min total.',
+      morning:[redlight, ...wedLifts, ...isoBlock(), sauna],
+      afternoon:[walk]},
+    { day:'Thu', label:'Z2 + Rehab', principle:'Easy recovery after Wednesday lift.',
+      morning:[redlight, z2, hiit, ...isoBlock(), {t:plyo,c:'#4eadb5'}],
+      afternoon:[walk]},
+    { day:'Fri', label:'Z2 + Rehab', principle:'Easy day before Saturday lift. No HIIT today.',
+      morning:[redlight, z2, ...isoBlock()],
+      afternoon:[walk]},
+    { day:'Sat', label:'Full Body — TB Style 💪', principle:'3 sets, ~80%, leave 2 reps in tank. Social lift. 40–50 min.',
+      morning:[redlight, ...satLifts, ...isoBlock(), sauna, {t:'💧 Hot tub — recovery.',c:'#4eadb5'}],
+      afternoon:[{t:'Rest.',c:'#888'}]},
+    { day:'Sun', label:'Z2 + Rehab', principle:'Easy close to the week. No pressure.',
+      morning:[redlight, z2, hiit, ...isoBlock(), {t:plyo,c:'#4eadb5'}],
       afternoon:[{t:'💧 Hot tub.',c:'#4eadb5'}]},
   ];
 }
@@ -662,7 +632,7 @@ const rehabData = {
 };
 
 const legData = {
-  safe: { color:'#4caf50', bg:'#f0faf0', title:'✅ Safe Now', items:['Hip thrusts / glute bridges','Romanian deadlift (RDL)','Single-leg RDL','Leg curl (lying or seated)','Nordic hamstring curl','Hip abduction / clamshells','Hip extension on cable','Reverse hypers','Seated hip abduction machine','Conventional deadlift (test at 270–300 lbs first)','Sumo deadlift (monitor — slightly more knee flexion)'] },
+  safe: { color:'#4caf50', bg:'#f0faf0', title:'✅ Safe Now', items:['Hip thrusts / glute bridges','Romanian deadlift (RDL)','Single-leg RDL','Leg curl (lying or seated)','Nordic hamstring curl','Seated hip abduction machine — start 2×15–20 very light, no fatigue. Progress only after 2 pain-free sessions. Banded walks reintroduce after 4–6 weeks of pain-free seated work.','Hip extension on cable','Reverse hypers','Conventional deadlift (test at 270–300 lbs first)','Sumo deadlift (monitor — slightly more knee flexion)'] },
   caution: { color:'#e8a838', bg:'#fdf8ee', title:'⚠️ Caution', items:['Good mornings','Deadlift first 2–3 sessions — watch Achilles 24hr response'] },
   avoid: { color:'#d94f4f', bg:'#fdf0f0', title:'❌ Avoid for Now', items:['Squats','Leg press (until Patellar Stage 2)','Hack squat','Bulgarian split squat with load','Lunges','Leg extension isotonic (isometric only)','Any deep knee flexion under load'] },
 };
@@ -721,8 +691,8 @@ function renderSchedule() {
   const recBg = programMode==='recovery' ? '#4eadb5' : 'transparent';
   const recCol = programMode==='recovery' ? '#fff' : '#888';
   const modeToggle = '<div style="display:flex;background:#e0ddd7;border-radius:11px;padding:3px;gap:3px;margin-bottom:14px">'
-    + '<button onclick="setProgramMode(&quot;full&quot;)" style="flex:1;padding:9px 4px;border:none;border-radius:9px;cursor:pointer;font-size:12px;font-weight:700;background:' + fullBg + ';color:' + fullCol + '">⚡ Full Program</button>'
-    + '<button onclick="setProgramMode(&quot;recovery&quot;)" style="flex:1;padding:9px 4px;border:none;border-radius:9px;cursor:pointer;font-size:12px;font-weight:700;background:' + recBg + ';color:' + recCol + '">🌿 Mentzer Mode</button>'
+    + '<button onclick="setProgramMode(&quot;full&quot;)" style="flex:1;padding:9px 4px;border:none;border-radius:9px;cursor:pointer;font-size:12px;font-weight:700;background:' + fullBg + ';color:' + fullCol + '">⚡ Full</button>'
+    + '<button onclick="setProgramMode(&quot;recovery&quot;)" style="flex:1;padding:9px 4px;border:none;border-radius:9px;cursor:pointer;font-size:12px;font-weight:700;background:' + recBg + ';color:' + recCol + '">💪 2-Day</button>'
     + '</div>';
 
   return modeToggle + `
